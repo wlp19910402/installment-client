@@ -1,14 +1,16 @@
 import React from 'react';
 import Routers from '@/plugins/libs/routerMap'
-import {BrowserRouter as Router,Route}from 'react-router-dom'
+import {HashRouter as Router,Route}from 'react-router-dom'
 import {connect} from 'react-redux'
 import {CLIENT_INTERFACE}from '@/plugins/libs/interfaceMap'
 import {SET_USER_INFO,SET_REDIRECT}from '@/store/actions'
 import axios from 'axios'
 import {getStorage}from '@/plugins/common/storage'
-import { Toast,Button} from 'antd-mobile';
-import Login from '@/views/Login'
-import Main from '@/views/Main'
+import { Toast} from 'antd-mobile';
+// import Login from '@/views/Login'
+import Main from '@/views/Main';
+
+import NavHeader from '@/components/common/NavHeader'
 class App extends React.Component{
   async componentDidMount(){
     await this.fetchCheckLogin()
@@ -49,24 +51,21 @@ class App extends React.Component{
       console.log('已经登录了')
       }catch(err){
         console.log(err)
+        Toast.info('请求异常', 1); //需删除
       }
   }
   render(){
     let isAuth=this.props.user.isAuth
     return (
       <Router>
-        {/* <Login/> */}
-        {/* <div>{this.props}</div> */}
-        <Button type="primary">按钮</Button>
         {Routers.map((item,index)=>{
-
           if(item.path!=='/login'){
-          return ( <div><div>--{item.path}--</div>
-            <div>***********</div>
-          <Route path={item.path} key={index} exact component={item.isAuth&&!isAuth?Login:item.component}></Route></div>)
+          // return (<Route path={item.path} key={index} exact component={item.isAuth&&!isAuth?Login:item.component}></Route>)
+          return (<div key={index}>
+            <NavHeader path={this.props.match}/>
+            <Route path={item.path} key={index} exact component={item.component}></Route></div>)
         }else{
-          return (<div><div>--{item.path}--</div>
-            <div>***********</div><Route path={item.path} key={index} exact component={isAuth?Main:item.component}></Route></div>)
+          return (<Route path={item.path} key={index} exact component={isAuth?Main:item.component}></Route>)
         }
         })}
       </Router>

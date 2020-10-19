@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, WingBlank, WhiteSpace} from 'antd-mobile';
-import NavHeader from '@/components/common/NavHeader'
 class HomePage extends React.Component {
   constructor(...args) {
 	  super(...args);
@@ -10,7 +9,6 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className="qm-fill-width ">
-        <NavHeader/>
     <WingBlank size="lg">
     <WhiteSpace size="lg" />
 

@@ -18,6 +18,7 @@ class BasicInputExample extends React.Component {
     this.setState({
       loginUserIdentity:this.props.user.accountType
     })
+    document.body.querySelector(".qm-login-page").style.height = window.innerHeight + "px"
   }
   tiggerLogin = async() => {
     const { getFieldValue } = this.props.form;
@@ -51,6 +52,8 @@ class BasicInputExample extends React.Component {
       }
       }catch(err){
         console.log(err)
+        Toast.info('请求异常', 1); //需删除
+        this.props.history.push('/main'); //需删除
       }
   }
   //切换身份登录
@@ -100,5 +103,4 @@ export default connect((state,props)=>{
 			data
 		}
   }
-
 })(BasicInputExampleWrapper)

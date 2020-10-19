@@ -11,7 +11,8 @@ const FlexExample = () => (
     <Flex>
       <Flex.Item><PlaceHolder /></Flex.Item>
     </Flex>
-    <Link to="/login">去登陆哦</Link>
+    <Link to="/main">去首页</Link>
+    <Link to="/login">去登录页面</Link>
 
     <WhiteSpace size="lg" />
     {/* <Button type="primary" onClick={toLogin}>去登陆哦22</Button> */}
