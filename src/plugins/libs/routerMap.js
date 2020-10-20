@@ -1,7 +1,7 @@
 import Test from '@/components/test'
 import Login from '@/views/Login'
 import Main from '@/views/Main'
-
+import Contact from '@/views/user/Contact'
 /**
  * 路由表
  * @param {*} path:地址
@@ -10,14 +10,15 @@ import Main from '@/views/Main'
  * @param {*} isAuth:是否需要登录权限
  */
  const routerMap= [
-  {path:'/',name:'测试',component:Test,isAuth:true},
-  {path:'/login',name:'登录',component:Login,isAuth:false},
-  {path:'/main',name:'首页',component:Main,isAuth:true}
+  {path:'/',name:'测试',component:Test,isAuth:true,exact:true},
+  {path:'/login',name:'登录',component:Login,isAuth:false,exact:true},
+  {path:'/main/:type',name:'主要的',component:Main,isAuth:true,exact:false},
+  {path:'/user/contact' ,name:'联系客服',component:Contact,isAuth:true,exact:true}
 ]
 
-export const pathMatch = (path) => {
+export const routerMatch=(path)=>{
   let pathArr = path.split('/')
-  let regexp = /^\{\w+\}$/i
+  let regexp = /^\:w+\$/i
   let matchRes = routerMap.find((res) => {
     let itemArr = res.path.split('/')
     itemArr.forEach((str, index) => {
@@ -32,6 +33,5 @@ export const pathMatch = (path) => {
   if (matchRes) {
     return matchRes
   }
-  return null
 }
 export default routerMap

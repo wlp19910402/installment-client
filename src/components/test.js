@@ -11,7 +11,7 @@ const FlexExample = () => (
     <Flex>
       <Flex.Item><PlaceHolder /></Flex.Item>
     </Flex>
-    <Link to="/main">去首页</Link>
+    <Link to="/main/home">去首页</Link>
     <Link to="/login">去登录页面</Link>
 
     <WhiteSpace size="lg" />

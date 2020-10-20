@@ -64,6 +64,79 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.qm-text-primary {
+  color: #77CC99;
+}
+.qm-text-waring {
+  color: #FF9758;
+}
+.qm-text-error {
+  color: #f4333c;
+}
+.qm-text-wait {
+  color: #108ee9;
+}
+.qm-bg-primary {
+  background-color: #77CC99;
+}
+.qm-bg-waring {
+  background-color: #FF9758;
+}
+.qm-bg-error {
+  background-color: #f4333c;
+}
+.qm-bg-wait {
+  background-color: #108ee9;
+}
+.qm-main-my-header {
+  padding-top: 10px;
+  background-color: #f5f5f9;
+  background-image: linear-gradient(to bottom, #77CC99, #77CC99 56%, #f5f5f9 56.001%);
+}
+.qm-main-my-header .am-card-body {
+  border-top: none !important;
+  padding-top: 0px;
+}
+.qm-main-my-header .am-card-body::before {
+  background-color: transparent !important;
+}
+.qm-main-my-header .am-grid-item-content {
+  text-align: left !important;
+  padding: 6px 0 !important;
+}
+.qm-icon-cricle {
+  border: 1px solid #333;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+}
+.qm-main-page {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  padding-top: 45px;
+  box-sizing: border-box;
+}
+.qm-main-page .qm-main-content {
+  max-height: 100%;
+  overflow: auto;
+  text-align: center;
+}
+.am-tab-bar {
+  margin-top: -1px;
+}
+.mainIcon {
+  font-size: 20px;
+}
+.homeMenuIcon {
+  font-size: 24px;
+}
+.qm-body-1 {
+  font-size: 12px;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
@@ -76,9 +149,16 @@ code {
   width: 100%;
   top: 0;
 }
-.am-list-content {
+.qm-main-home .am-list-content {
   border-left: 1px solid #f0f0f0;
   padding-left: 10px;
+}
+.qm-main-home .am-list-item {
+  margin-right: 6px;
+}
+.qm-main-home .am-list-item img {
+  width: 2.2rem;
+  height: 2.2rem;
 }
 /*登录页面*/
 .qm-login-page {

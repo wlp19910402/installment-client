@@ -9,6 +9,98 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.qm-text-primary {
+  color: @brand-primary
+}
+
+.qm-text-waring {
+  color: @brand-warning
+}
+
+.qm-text-error {
+  color: @brand-error
+}
+
+.qm-text-wait {
+  color: @brand-wait
+}
+
+.qm-bg-primary {
+  background-color: @brand-primary
+}
+
+.qm-bg-waring {
+  background-color: @brand-warning
+}
+
+.qm-bg-error {
+  background-color: @brand-error
+}
+
+.qm-bg-wait {
+  background-color: @brand-wait
+}
+
+.qm-main-my-header {
+  padding-top: 10px;
+  background-color: #f5f5f9;
+  background-image: linear-gradient(to bottom, @brand-primary, @brand-primary 56%, #f5f5f9 56.001%);
+
+  .am-card-body {
+    border-top: none !important;
+    padding-top: 0px;
+
+    &::before {
+      background-color: transparent !important;
+    }
+  }
+
+  .am-grid-item-content {
+    text-align: left !important;
+    padding: 6px 0 !important;
+  }
+}
+
+.qm-icon-cricle {
+  border: 1px solid @color-text-base;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.qm-main-page {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  padding-top: 45px;
+  box-sizing: border-box;
+
+  .qm-main-content {
+    max-height: 100%;
+    overflow: auto;
+    text-align: center;
+  }
+}
+
+.am-tab-bar {
+  margin-top: -1px;
+}
+
+.mainIcon {
+  font-size: 20* @hd;
+}
+
+.homeMenuIcon {
+  font-size: 24*@hd;
+}
+
+.qm-body-1 {
+  font-size: @font-size-caption-sm;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -25,9 +117,20 @@ code {
   top: 0;
 }
 
-.am-list-content {
-  border-left: 1px solid #f0f0f0;
-  padding-left: 10px;
+.qm-main-home {
+  .am-list-content {
+    border-left: 1px solid #f0f0f0;
+    padding-left: 10px;
+  }
+
+  .am-list-item {
+    margin-right: 6px;
+
+    img {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
+  }
 }
 
 /*登录页面*/

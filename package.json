@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -41,7 +42,8 @@
   "theme": {
     "brand-primary": "#77CC99",
     "color-text-base": "#333",
-    "brand-primary-tap": "#66aa88"
+    "brand-primary-tap": "#66aa88",
+    "brand-warning": "#FF9758"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.12.1",

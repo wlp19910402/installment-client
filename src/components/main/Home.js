@@ -16,44 +16,42 @@ class HomePage extends React.Component {
   }
   render() {
     return (
-      <div className="qm-fill-width" style={{backgroundColor:"#f5f5f9"}}>
-    <WingBlank size="lg">
-    <WhiteSpace size="lg" />
+      <div className="qm-fill-width qm-main-home">
+    <WingBlank size="md">
+    <WhiteSpace size="md" />
     <Card><img src={banner}></img></Card>
-    <WhiteSpace size="lg" />
+    <WhiteSpace size="md" />
     <List>
         <Item
           arrow="horizontal"
-          thumb={this.state.icon}
+          thumb={this.state.icon()}
           multipleLine
           onClick={() => {}}
         >
           {this.state.title} <Brief>{this.state.text}</Brief>
         </Item>
       </List>
-      <WhiteSpace size="lg" />
+      <WhiteSpace size="md" />
       {['1','2','3','4','5'].map(item=>{
         return(
           <div key={item}>
           <List>
             <Item
               style={{overflow:"auto"}}
-              extra={item+"  10:30"}
-              thumb={infoListMatch(item).icon}
+              thumb={infoListMatch(item).icon()}
               multipleLine
               onClick={() => {}}
             >
               {infoListMatch(item).title}
               <Badge style={{marginTop:"-16px",zIndex:10,position:"absolute"}} text={7+parseInt(item)} overflowCount={10} />
-              <div style={{float:"right",color:"#999",fontSize:"12px"}}>{"2020/10/20 10:30"}</div>
-              <Brief style={{width:this.state.subTextWith}}>李宇轩完成了任务，资料已上传完成，请李宇轩完成了任务，资料已上传完成，请...</Brief>
+              <div style={{float:"right",color:"#999"}} className="qm-body-1">{"2020/10/20 10:30"}</div>
+              <Brief style={{width:this.state.subTextWith}}>李宇轩完成了任务，资料已上传完成，请李宇轩完成了任务，，资料已上传完成，请李宇轩完成了任务，，资料已上传完成，请李宇轩完成了任务，资料已上传完成，请...</Brief>
             </Item>
           </List>
-          <WhiteSpace size="lg" />
+          <WhiteSpace size="md" />
           </div>
         )
       })}
-    <WhiteSpace size="lg" />
   </WingBlank>
       </div>
     );

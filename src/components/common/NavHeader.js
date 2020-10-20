@@ -1,25 +1,55 @@
-import { NavBar, Icon } from 'antd-mobile';
+import { NavBar,Icon } from 'antd-mobile';
 import React,{Component}from 'react'
-// import {connect} from 'react-redux'
-// import {pathMatch} from '@/plugins/libs/routerMap'
+import {connect} from 'react-redux'
+
+import {routerMatch}from '@/plugins/libs/routerMap'
+
 class NavHeaderCmp extends Component{
-  // constructor(...args) {
-  //   super(...args);
-  // }
+  componentDidMount(){
+    console.log("update")
+    this.state={
+      title:'装修分期'
+    }
+    // console.log(this.props.match)
+  }
+  componentDidUpdate(){
+    let hash =window.location.hash
+    let path = hash.substring(1,hash.length)
+    this.setState=({
+      title:routerMatch(path)||'装修分期'
+    })
+  }
+  goBack(){
+    window.history.back()
+  }
   render(){
     return (
       <NavBar
+      icon={<Icon type="left" onClick={this.goBack}/>}
         mode="dark"
-        // leftContent={[
-        //   <Icon key="0" type="left" />,
-        // ]}
-        // rightContent={[
-        //   <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-        //   <Icon key="1" type="ellipsis" />,
-        // ]}
-      >{this.props.match||'装修分期'}</NavBar>
+      >{this.props.title||this.state.title}</NavBar>
     )
   }
 };
 
-export default NavHeaderCmp
+
+export default connect((state,props)=>{
+  console.log(props)
+  let hash =window.location.hash
+  let path = hash.substring(1,hash.length)
+  let newProps={
+    ...props
+  }
+  if(props){
+    if(props.title){
+    newProps={
+      ...props,
+      title:props.title||'装修分期'
+    }
+    return newProps
+  }
+  }
+return {title:"装修分期"}
+
+})(NavHeaderCmp)
+

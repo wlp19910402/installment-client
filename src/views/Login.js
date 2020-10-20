@@ -53,7 +53,7 @@ class BasicInputExample extends React.Component {
       }catch(err){
         console.log(err)
         Toast.info('请求异常', 1); //需删除
-        this.props.history.push('/main'); //需删除
+        this.props.history.push('/main/home'); //需删除
       }
   }
   //切换身份登录
