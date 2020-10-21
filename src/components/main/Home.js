@@ -1,8 +1,9 @@
 import React from 'react';
 import { Card, WingBlank, WhiteSpace,List,Badge} from 'antd-mobile';
-// import {Link}from'react-router-dom'
+import {connect} from 'react-redux'
 import banner from '@/assets/img/home-banner.png'
 import {infoListMatch} from '@/plugins/resurceStatus/infoList'
+import {USER_IDNTITY} from '@/plugins/resurceStatus/user'
 const Item = List.Item;
 const Brief = Item.Brief;
 
@@ -19,9 +20,9 @@ class HomePage extends React.Component {
       <div className="qm-fill-width qm-main-home">
     <WingBlank size="md">
     <WhiteSpace size="md" />
-    <Card><img src={banner}></img></Card>
+    <Card><img src={banner} alt="banner"></img></Card>
     <WhiteSpace size="md" />
-    <List>
+      {this.props.user.accountType===USER_IDNTITY.BANK_STAFF?<div><List>
         <Item
           arrow="horizontal"
           thumb={this.state.icon()}
@@ -30,8 +31,8 @@ class HomePage extends React.Component {
         >
           {this.state.title} <Brief>{this.state.text}</Brief>
         </Item>
-      </List>
-      <WhiteSpace size="md" />
+      </List><WhiteSpace size="md" /></div>:null}
+
       {['1','2','3','4','5'].map(item=>{
         return(
           <div key={item}>
@@ -58,4 +59,9 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+export default connect((state,props)=>{
+	return ({
+    ...props,
+    ...state
+  })
+})(HomePage)

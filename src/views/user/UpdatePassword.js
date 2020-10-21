@@ -27,7 +27,7 @@ class Main extends Component{
           <WhiteSpace size="lg" />
           <WhiteSpace size="lg" />
           <WhiteSpace size="lg" />
-          <img src={require('@/assets/img/contact.png')}/>
+          <img src={require('@/assets/img/contact.png')}  alt="contactIcon"/>
           <WhiteSpace size="lg" />
           <span className="qm-text-wait"><PhoneFilled rotate="90"/>  010_8787989</span>
         </div>

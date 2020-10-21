@@ -30,7 +30,7 @@ class Main extends Component{
       <div className="qm-main-page">
         <NavHeader title={mainTypeMatch(this.props.match.params.type).headerName}/>
         <TabBar
-          unselectedTintColor="#949494"
+          unselectedTintColor="#888"
           tintColor="#77CC99"
           barTintColor="white"
         >

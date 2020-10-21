@@ -1,9 +1,13 @@
 import React from 'react';
-import { Modal,Card, WingBlank, WhiteSpace,List,Grid} from 'antd-mobile';
-import {LockOutlined,LogoutOutlined,CustomerServiceOutlined,UserOutlined,MobileOutlined,CreditCardOutlined,BankFilled}from '@ant-design/icons'
+import { Modal,Card, WingBlank, WhiteSpace,List,Grid,Switch,Toast} from 'antd-mobile';
+import {LockOutlined,LogoutOutlined,CustomerServiceOutlined,UserOutlined,MobileOutlined,CreditCardOutlined,BankFilled,CarryOutFilled}from '@ant-design/icons'
 import {Link}from 'react-router-dom'
 import {connect} from 'react-redux'
-import {CLEAR_USER_INFO}from '@/store/actions'
+import {CLEAR_USER_INFO,SET_ACCEPT_ORDER_STATUS}from '@/store/actions'
+import { createForm } from 'rc-form';
+import {USER_IDNTITY} from '@/plugins/resurceStatus/user'
+import {CLIENT_INTERFACE}from '@/plugins/libs/interfaceMap'
+import axios from 'axios'
 
 const Item = List.Item;
 const alert=Modal.alert;
@@ -18,12 +22,14 @@ const data =[
   "icon":()=>(<BankFilled/>),
   "text":"中国银行"
 }]
-
-const showAlert = () => {
-
-};
-
 class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      checked: false,
+      checked1:true
+    };
+  }
   fetchUserTag(){
     data.forEach((item,index)=>{
       if(index===0){
@@ -31,14 +37,14 @@ class HomePage extends React.Component {
       }else if(index===1){
         item.text=this.props.user.department
       }else if(index===2){
-        item.text=this.props.user.company_unit
+        item.text=this.props.user.companyUnit
       }
     })
     return data
   }
   exitClearUserData(){
     const alertInstance = alert('确认要退出登录吗','', [
-      { text: '取消', onPress: () => console.log('cancel'), style: 'default' },
+      { text: '取消', onPress: () => null, style: 'default' },
       { text: '确认退出', onPress: () =>{
         this.props.parent.props.history.push('/login')
         this.props.clearUserInfo()
@@ -48,10 +54,9 @@ class HomePage extends React.Component {
       // 可以调用close方法以在外部close
       alertInstance.close();
     }, 500000);
-
-
   }
   render() {
+    const { getFieldProps } = this.props.form;
     return (
       <div className="qm-fill-width">
       <div className="qm-main-my-header qm-bg-primary">
@@ -61,7 +66,7 @@ class HomePage extends React.Component {
       <Card.Header
         title={<WingBlank>
           <WhiteSpace size="md" />
-          <div>{this.props.user.user_name}</div>
+          <div>{this.props.user.userName}</div>
           <span className="qm-text-primary qm-body-1">{this.props.user.user_position}</span>
           <WhiteSpace size="md" /></WingBlank>}
         thumb={<div className="qm-icon-cricle"><UserOutlined /></div>}
@@ -82,9 +87,55 @@ class HomePage extends React.Component {
     </Card>
     </WingBlank>
       </div>
-
     <WhiteSpace size="md" />
     <WingBlank size="md">
+    {this.props.user.accountType===USER_IDNTITY.FOREIGN_STAFF?
+    <div>
+      <List>
+      <Item
+        thumb={<CarryOutFilled className="qm-text-primary mainIcon"/>}
+          extra={<Switch
+            {...getFieldProps('acceptOrderStatus', {
+              initialValue: this.state.checked1,
+              valuePropName: 'checked',
+              onChange: (val) => {
+                console.log(val);
+              },
+            })}
+            onClick={async(checked) => {
+              let userInfo = this.props.user
+              try{
+                let res = await axios({
+                  url: CLIENT_INTERFACE.SET_ACCEPT_ORDER_STATUS,
+                  method: 'post',
+                  headers: {
+                    'Content-Type': 'application/json; charset=UTF-8',
+                    "accountId":userInfo.accountId,
+                    "accountType":userInfo.accountType,
+                    "token":userInfo.token
+                   },
+                  data:{"acceptOrderStatus":checked?1:0}
+                })
+                if(res.data.err!=='0'){
+                  Toast.info(res.data.msg, 1);
+                  return
+                }
+                let userData = res.data.result
+                this.props.form.setFieldsValue({
+                  acceptOrderStatus:userData===0?false:true
+                });
+                this.props.setWhetherOrder(userData)
+              }catch(err){
+                console.log(err)
+              }
+
+            }
+          }
+          />}
+        >接单</Item>
+      </List>
+      <WhiteSpace size="md" />
+      </div>:null}
     <List>
     <Link to="/">
         <Item
@@ -101,8 +152,7 @@ class HomePage extends React.Component {
         </Item>
         </Link>
       </List>
-
-    <WhiteSpace size="lg" />
+    <WhiteSpace size="md" />
     <List>
      <Item
           thumb={<LogoutOutlined  className="qm-text-error mainIcon"/>}
@@ -125,5 +175,11 @@ export default connect((state,props)=>{
 		return{
 			type:CLEAR_USER_INFO
 		}
+  },
+  setWhetherOrder(data){
+    return {
+      type:SET_ACCEPT_ORDER_STATUS,
+      data
+    }
   }
-})(HomePage)
+})(createForm()(HomePage))

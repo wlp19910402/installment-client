@@ -7,13 +7,15 @@ import Contact from '@/views/user/Contact'
  * @param {*} path:地址
  * @param {*} name:名称
  * @param {*} component:组件
- * @param {*} isAuth:是否需要登录权限
+ * @param {*} loginFlag:是否需要登录,登录标识
+ * @param {*} exact:子集路由下包含此等组件
+ * @param {*} back:是否又返回键
  */
  const routerMap= [
-  {path:'/',name:'测试',component:Test,isAuth:true,exact:true,back:false},
-  {path:'/login',name:'登录',component:Login,isAuth:false,exact:true,back:false},
-  {path:'/main/:type',name:'主要的',component:Main,isAuth:true,exact:false,back:false},
-  {path:'/user/contact' ,name:'联系客服',component:Contact,isAuth:true,exact:true,back:true}
+  {path:'/',name:'测试',component:Test,loginFlag:true,exact:true,back:false},
+  {path:'/login',name:'登录',component:Login,loginFlag:false,exact:true,back:false},
+  {path:'/main/:type',name:'主要的',component:Main,loginFlag:true,exact:false,back:false},
+  {path:'/user/contact' ,name:'联系客服',component:Contact,loginFlag:true,exact:true,back:true}
 ]
 
 export const routerMatch=(path)=>{
@@ -26,13 +28,16 @@ export const routerMatch=(path)=>{
         itemArr[index] = pathArr[index]
       }
     })
-
     if (JSON.stringify(itemArr) === JSON.stringify(pathArr)) {
       return res
+    }else{
+      return false
     }
   })
   if (matchRes) {
     return matchRes
+  }else{
+    return null
   }
 }
 export default routerMap

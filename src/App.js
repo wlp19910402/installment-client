@@ -18,7 +18,7 @@ class App extends React.Component{
   //是否已经登录过及查证token是否是有效登录，并更新token
   fetchCheckLogin=async()=>{
     //用户是否已经登录过了
-    if(this.props.user.isAuth){
+    if(this.props.user.loginFlag){
       if(window.location.pathname==='/login') {window.location.pathname='/main/home'}
       return
     }
@@ -38,7 +38,7 @@ class App extends React.Component{
       let res = await axios({
         url: CLIENT_INTERFACE.CHECK_IS_LOGIN,
         method: 'post',
-        headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+        headers: { 'Content-Type': 'application/json; charset=UTF-8'},
         data:{ ...storageUserInfo}
       })
       if(res.data.err!=='0'){
@@ -46,29 +46,27 @@ class App extends React.Component{
         return
       }
       let userData = { ...storageUserInfo, ...res.data.result}
-
       this.props.setUserInfo(userData)
       console.log(res.data.result)
       if(window.location.pathname==='/login') {window.location.pathname='/main/home'}
       console.log('已经登录了')
-      }catch(err){
-        console.log(err)
-        Toast.info('请求异常', 1); //需删除
-      }
-
+    }catch(err){
+      console.log(err)
+      Toast.info('请求异常', 1); //需删除
+    }
   }
   render(){
-    let isAuth=this.props.user.isAuth
+    let loginFlag=this.props.user.loginFlag
     return (
 
       <Router>
         {Routers.map((item,index)=>{
           if(item.path!=='/login'){
-          // return (<Route path={item.path} key={index} exact component={item.isAuth&&!isAuth?Login:item.component}></Route>)
+          // return (<Route path={item.path} key={index} exact component={item.loginFlag&&!loginFlag?Login:item.component}></Route>)
           return (<div key={index}>
             <Route path={item.path} key={index} exact={item.exact} component={item.component}></Route></div>)
         }else{
-          return (<Route path={item.path} key={index} exact component={isAuth?Main:item.component}></Route>)
+          return (<Route path={item.path} key={index} exact component={loginFlag?Main:item.component}></Route>)
         }
         })}
 
