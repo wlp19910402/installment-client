@@ -23,8 +23,8 @@ export const mainPageMap=[
     icon:()=>(
       <HomeOutlined className="mainIcon"/>
     ),
-    component:()=>(
-      <Home/>
+    component:(that)=>(
+      <Home parent={that}/>
     )
   },
   {
@@ -34,8 +34,8 @@ export const mainPageMap=[
     icon:()=>(
       <CopyOutlined className="mainIcon"/>
     ),
-    component:()=>(
-      <Task/>
+    component:(that)=>(
+      <Task  parent={that}/>
     )
   },
   {
@@ -45,8 +45,8 @@ export const mainPageMap=[
     icon:()=>(
       <UserOutlined className="mainIcon"/>
     ),
-    component:()=>(
-      <My/>
+    component:(that)=>(
+      <My parent={that}/>
     )
   }
 ]

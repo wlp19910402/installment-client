@@ -45,14 +45,17 @@ class App extends React.Component{
         Toast.info(res.data.msg, 1);
         return
       }
-      let userData = { ...storageUserInfo, token:res.data.result.token}
+      let userData = { ...storageUserInfo, ...res.data.result}
+
       this.props.setUserInfo(userData)
+      console.log(res.data.result)
       if(window.location.pathname==='/login') {window.location.pathname='/main/home'}
       console.log('已经登录了')
       }catch(err){
         console.log(err)
         Toast.info('请求异常', 1); //需删除
       }
+
   }
   render(){
     let isAuth=this.props.user.isAuth

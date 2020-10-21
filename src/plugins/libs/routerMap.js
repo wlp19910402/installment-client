@@ -10,15 +10,15 @@ import Contact from '@/views/user/Contact'
  * @param {*} isAuth:是否需要登录权限
  */
  const routerMap= [
-  {path:'/',name:'测试',component:Test,isAuth:true,exact:true},
-  {path:'/login',name:'登录',component:Login,isAuth:false,exact:true},
-  {path:'/main/:type',name:'主要的',component:Main,isAuth:true,exact:false},
-  {path:'/user/contact' ,name:'联系客服',component:Contact,isAuth:true,exact:true}
+  {path:'/',name:'测试',component:Test,isAuth:true,exact:true,back:false},
+  {path:'/login',name:'登录',component:Login,isAuth:false,exact:true,back:false},
+  {path:'/main/:type',name:'主要的',component:Main,isAuth:true,exact:false,back:false},
+  {path:'/user/contact' ,name:'联系客服',component:Contact,isAuth:true,exact:true,back:true}
 ]
 
 export const routerMatch=(path)=>{
   let pathArr = path.split('/')
-  let regexp = /^\:w+\$/i
+  let regexp = /^:\w+/i
   let matchRes = routerMap.find((res) => {
     let itemArr = res.path.split('/')
     itemArr.forEach((str, index) => {
@@ -26,6 +26,7 @@ export const routerMatch=(path)=>{
         itemArr[index] = pathArr[index]
       }
     })
+
     if (JSON.stringify(itemArr) === JSON.stringify(pathArr)) {
       return res
     }

@@ -1,5 +1,5 @@
 /**
- * 联系客服 页面
+ * 修改密码
  */
 import { WhiteSpace } from 'antd-mobile';
 import React,{Component}from 'react'

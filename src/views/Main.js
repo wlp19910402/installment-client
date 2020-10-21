@@ -16,6 +16,15 @@ class Main extends Component{
       selectedTab:mainTypeMatch(this.props.match.params.type).type
     })
   }
+  componentDidUpdate(old_props,old_state){
+    let old_p_type=old_props.match.params.type
+    let new_p_type=this.props.match.params.type
+		if(old_p_type!==new_p_type){
+      this.setState({
+        selectedTab: mainTypeMatch(this.props.match.params.type).type,
+      });
+		}
+  }
   render(){
     return (
       <div className="qm-main-page">
@@ -35,13 +44,9 @@ class Main extends Component{
                 selected={this.state.selectedTab === item.type}
                 onPress={() => {
                   this.props.history.push(`/main/${item.type}`)
-                  this.setState({
-                    selectedTab: item.type,
-                  });
                 }}
               >
-                {/* {HomeButton()} */}
-              {item.component()}
+              {item.component(this)}
               </TabBar.Item>
             )
           })}

@@ -10,27 +10,36 @@ import {removeStorage,setStorage}from '@/plugins/common/storage'
  * @param {*} isAuth:是否已经登录
  * @param {*} redirectPath:重定向地址
  */
-function userInfo (state={accountId:'',accountType:USER_IDNTITY.BANK_STAFF,token:null,isAuth:false,redirectPath:'/'},action){
+const userDefault= {
+  accountId:'188888888',
+  accountType:USER_IDNTITY.BANK_STAFF,
+  token:null,
+  isAuth:false,
+  redirectPath:'/',
+  user_name:"尚未登录",
+  department:"测试部门",
+  company_unit:"测试单位",
+  user_position:"测试公司"
+}
+function userInfo (state=userDefault,action){
+  console.log(action.data)
 	switch(action.type){
 		case SET_USER_INFO:
 			let newState={
 				...state,
-        accountId:action.data.accountId,
-        accountType:action.data.accountType,
-        token:action.data.token,
-        isAuth:action.data.accountId.trim()!==''
+        ...action.data,
+        isAuth:action.data.accountId.trim()!=='',
       }
-      setStorage('storageUserInfo',{...action.data})
+      let logState={
+        accountId:newState.accountId,
+        accountType:newState.accountType,
+        token:newState.token
+      }
+      setStorage('storageUserInfo',logState)
 			return newState;
 		case CLEAR_USER_INFO:
-			let clearState={
-				...state,
-				accountId:'',
-        token:'',
-        isAuth:false
-      }
       removeStorage('storageUserInfo')
-      return clearState;
+      return userDefault;
     case SET_REDIRECT:
       let setRedirectState={
         ...state,

@@ -45,7 +45,7 @@ class BasicInputExample extends React.Component {
         Toast.info(res.data.msg, 1);
         return
       }
-      let userData = { accountId,  accountType, token:res.data.result.token}
+      let userData = { accountId,  accountType, ...res.data.result}
       this.props.setUserInfo(userData)
       if(this.props.history.location.pathname==='/login'){
         this.props.history.replace(this.props.user.redirectPath);
