@@ -11,7 +11,6 @@ class Main extends Component{
     };
   }
   componentDidMount(){
-    console.log()
     this.setState({
       selectedTab:mainTypeMatch(this.props.match.params.type).type
     })

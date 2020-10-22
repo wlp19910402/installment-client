@@ -6,7 +6,7 @@ import {regexp} from '@/plugins/common/regexp'
 import {SET_USER_INFO}from '@/store/actions'
 import {connect} from 'react-redux'
 import {CLIENT_INTERFACE}from '@/plugins/libs/interfaceMap'
-import axios from 'axios'
+import axios from '@/plugins/requestServer/httpClient'
 class BasicInputExample extends React.Component {
   constructor(...args) {
 	  super(...args);
@@ -35,12 +35,7 @@ class BasicInputExample extends React.Component {
     }
     //基本验证通过，请求登录
     try{
-      let res = await axios({
-        url: CLIENT_INTERFACE.LOGIN,
-        method: 'post',
-        headers: { 'Content-Type': 'application/json; charset=UTF-8' },
-        data:{ accountId,  password,  accountType }
-      })
+      let res = await axios.post(CLIENT_INTERFACE.LOGIN,{accountId,password,accountType})
       if(res.data.err!=='0'){
         Toast.info(res.data.msg, 1);
         return
@@ -53,7 +48,6 @@ class BasicInputExample extends React.Component {
       }catch(err){
         console.log(err)
         Toast.info('请求异常', 1); //需删除
-        this.props.history.push('/main/home'); //需删除
       }
   }
   //切换身份登录

@@ -23,9 +23,6 @@ const data =[
   "text":"中国银行"
 }]
 class HomePage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   fetchUserTag(){
     data.forEach((item,index)=>{
       if(index===0){
@@ -63,7 +60,7 @@ class HomePage extends React.Component {
         title={<WingBlank>
           <WhiteSpace size="md" />
           <div>{this.props.user.userName}</div>
-          <span className="qm-text-primary qm-body-1">{this.props.user.user_position}</span>
+          <span className="qm-text-primary qm-body-1">{this.props.user.position}</span>
           <WhiteSpace size="md" /></WingBlank>}
         thumb={<div className="qm-icon-cricle"><UserOutlined /></div>}
       />

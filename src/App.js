@@ -8,18 +8,18 @@ import axios from '@/plugins/requestServer/httpClient'
 import {getStorage}from '@/plugins/common/storage'
 import { Toast} from 'antd-mobile';
 import Main from '@/views/Main';
-// import Login from '@/views/Login'
-
-
+import Login from '@/views/Login'
 class App extends React.Component{
-  async componentDidMount(){
+  async componentWillMount(){
     await this.fetchCheckLogin()
   }
   //是否已经登录过及查证token是否是有效登录，并更新token
   fetchCheckLogin=async()=>{
+    let hash =window.location.hash
+    let path = hash.substring(1,hash.length)
     //用户是否已经登录过了
     if(this.props.user.loginFlag){
-      if(window.location.pathname==='/login') {window.location.pathname='/main/home'}
+      if(path==='/login') {window.location.hash='#/main/home'}
       return
     }
     //本地是否有存储用户信息
@@ -28,29 +28,28 @@ class App extends React.Component{
     try{
       let res = await axios.get(CLIENT_INTERFACE.CHECK_IS_LOGIN)
       if(res.data.err!=='0'){
+        if(path==='/login') return
         Toast.info(res.data.msg, 1);
         return
       }
       let userData = { ...storageUserInfo, ...res.data.result}
       this.props.setUserInfo(userData)
-      console.log(res.data.result)
-      if(window.location.pathname==='/login') {window.location.pathname='/main/home'}
+      if(path==='/login') {window.location.hash='#/main/home'}
       console.log('已经登录了')
     }catch(err){
       console.log(err)
-      Toast.info('请求异常', 1); //需删除
+      // Toast.info('请求异常', 1); //需删除
     }
   }
   render(){
     let loginFlag=this.props.user.loginFlag
     return (
-
       <Router>
         {Routers.map((item,index)=>{
           if(item.path!=='/login'){
-          // return (<Route path={item.path} key={index} exact component={item.loginFlag&&!loginFlag?Login:item.component}></Route>)
-          return (<div key={index}>
-            <Route path={item.path} key={index} exact={item.exact} component={item.component}></Route></div>)
+          return (<Route path={item.path} key={index} exact component={item.loginFlag&&!loginFlag?Login:item.component}></Route>)
+          // return (
+          //   <Route path={item.path} key={index} exact={item.exact} component={item.component}></Route>)
         }else{
           return (<Route path={item.path} key={index} exact component={loginFlag?Main:item.component}></Route>)
         }

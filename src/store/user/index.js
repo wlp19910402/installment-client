@@ -20,7 +20,7 @@ const userDefault= {
   accountType:USER_IDNTITY.BANK_STAFF,
   token:null,
   loginFlag:false,
-  redirectPath:'/',
+  redirectPath:'/main/home',
   userName:"尚未登录",
   department:"测试部门",
   companyUnit:"默认单位",
