@@ -7,7 +7,7 @@ import {CLEAR_USER_INFO,SET_ACCEPT_ORDER_STATUS}from '@/store/actions'
 import { createForm } from 'rc-form';
 import {USER_IDNTITY} from '@/plugins/resurceStatus/user'
 import {CLIENT_INTERFACE}from '@/plugins/libs/interfaceMap'
-import axios from 'axios'
+import axios from '@/plugins/requestServer/httpClient'
 
 const Item = List.Item;
 const alert=Modal.alert;
@@ -25,10 +25,6 @@ const data =[
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      checked: false,
-      checked1:true
-    };
   }
   fetchUserTag(){
     data.forEach((item,index)=>{
@@ -96,26 +92,15 @@ class HomePage extends React.Component {
         thumb={<CarryOutFilled className="qm-text-primary mainIcon"/>}
           extra={<Switch
             {...getFieldProps('acceptOrderStatus', {
-              initialValue: this.state.checked1,
+              initialValue: this.props.user.acceptOrderStatus!==0,
               valuePropName: 'checked',
               onChange: (val) => {
                 console.log(val);
               },
             })}
             onClick={async(checked) => {
-              let userInfo = this.props.user
               try{
-                let res = await axios({
-                  url: CLIENT_INTERFACE.SET_ACCEPT_ORDER_STATUS,
-                  method: 'post',
-                  headers: {
-                    'Content-Type': 'application/json; charset=UTF-8',
-                    "accountId":userInfo.accountId,
-                    "accountType":userInfo.accountType,
-                    "token":userInfo.token
-                   },
-                  data:{"acceptOrderStatus":checked?1:0}
-                })
+                let res = await axios.post(CLIENT_INTERFACE.SET_ACCEPT_ORDER_STATUS,{"acceptOrderStatus":checked?1:0})
                 if(res.data.err!=='0'){
                   Toast.info(res.data.msg, 1);
                   return
@@ -128,7 +113,6 @@ class HomePage extends React.Component {
               }catch(err){
                 console.log(err)
               }
-
             }
           }
           />}

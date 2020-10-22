@@ -4,7 +4,7 @@ import Routers from '@/plugins/libs/routerMap'
 import {connect} from 'react-redux'
 import {CLIENT_INTERFACE}from '@/plugins/libs/interfaceMap'
 import {SET_USER_INFO,SET_REDIRECT}from '@/store/actions'
-import axios from 'axios'
+import axios from '@/plugins/requestServer/httpClient'
 import {getStorage}from '@/plugins/common/storage'
 import { Toast} from 'antd-mobile';
 import Main from '@/views/Main';
@@ -24,23 +24,9 @@ class App extends React.Component{
     }
     //本地是否有存储用户信息
     let storageUserInfo=getStorage('storageUserInfo')
-    if(!storageUserInfo){
-      // this.goLogin()
-      return
-    }
-    //本地存储的用户信息不能为空
-    if(!storageUserInfo.accountId||!storageUserInfo.accountType||!storageUserInfo.token){
-      // this.goLogin()
-      return
-    }
     //根据本地存储的用户信息，进行请求token是否有效登录，如果有效则更新token值
     try{
-      let res = await axios({
-        url: CLIENT_INTERFACE.CHECK_IS_LOGIN,
-        method: 'post',
-        headers: { 'Content-Type': 'application/json; charset=UTF-8'},
-        data:{ ...storageUserInfo}
-      })
+      let res = await axios.get(CLIENT_INTERFACE.CHECK_IS_LOGIN)
       if(res.data.err!=='0'){
         Toast.info(res.data.msg, 1);
         return
