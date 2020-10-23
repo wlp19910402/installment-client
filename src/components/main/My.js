@@ -116,12 +116,13 @@ class HomePage extends React.Component {
       <WhiteSpace size="md" />
       </div>:null}
     <List>
-    <Link to="/">
+      <Link to="/user/updatePassword">
         <Item
           thumb={<LockOutlined className="qm-text-waring mainIcon"/>}
           arrow="horizontal"
           onClick={() => {}}
-        >修改密码</Item></Link>
+        >修改密码</Item>
+        </Link>
         <Link to="/user/contact">
         <Item
           thumb={<CustomerServiceOutlined  className="qm-text-wait mainIcon"/>}
@@ -138,6 +139,17 @@ class HomePage extends React.Component {
           arrow="horizontal"
           onClick={this.exitClearUserData.bind(this)}
         > 退出登录</Item>
+      </List>
+      <WhiteSpace size="md" />
+      <List>
+        <Link to="/">
+        <Item
+          thumb={<CustomerServiceOutlined  className="qm-text-wait mainIcon"/>}
+          arrow="horizontal"
+        >
+          首页
+        </Item>
+        </Link>
       </List>
   </WingBlank>
       </div>

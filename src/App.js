@@ -61,6 +61,7 @@ class App extends React.Component{
         //去请求刷新token
         let res = await axios.get(CLIENT_INTERFACE.REFRESH_TOKEN) //刷新token值
         if(res.data.err==="0"){
+          console.log("刷新了token",res)
           this.props.setUserInfo({token:res.data.result.token})
           this.watchRefreshTime=setTimeout(async () => {
             await that.watchToken()

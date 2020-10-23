@@ -2,6 +2,7 @@ import Test from '@/components/test'
 import Login from '@/views/Login'
 import Main from '@/views/Main'
 import Contact from '@/views/user/Contact'
+import UpdatePassword from '@/views/user/UpdatePassword'
 /**
  * 路由表
  * @param {*} path:地址
@@ -15,7 +16,8 @@ import Contact from '@/views/user/Contact'
   {path:'/',name:'测试',component:Test,loginFlag:true,exact:true,back:false},
   {path:'/login',name:'登录',component:Login,loginFlag:false,exact:true,back:false},
   {path:'/main/:type',name:'主要的',component:Main,loginFlag:true,exact:false,back:false},
-  {path:'/user/contact' ,name:'联系客服',component:Contact,loginFlag:true,exact:true,back:true}
+  {path:'/user/contact' ,name:'联系客服',component:Contact,loginFlag:true,exact:true,back:true},
+  {path:'/user/updatePassword',name:"修改密码",component:UpdatePassword,loginFlag:true,exact:true,back:true}
 ]
 
 export const routerMatch=(path)=>{
