@@ -70,7 +70,6 @@ class App extends React.Component{
       }
     }
   }
-
   render(){
     let loginFlag=this.props.user.loginFlag
     return (
