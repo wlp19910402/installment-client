@@ -24,7 +24,6 @@ axios.interceptors.request.use((config)=>{
   config.headers.accountId=accountId
   config.headers.accountType=accountType
   config.headers.token=token
-
   return config;
 })
 

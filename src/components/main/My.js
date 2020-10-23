@@ -90,10 +90,7 @@ class HomePage extends React.Component {
           extra={<Switch
             {...getFieldProps('acceptOrderStatus', {
               initialValue: this.props.user.acceptOrderStatus!==0,
-              valuePropName: 'checked',
-              onChange: (val) => {
-                console.log(val);
-              },
+              valuePropName: 'checked'
             })}
             onClick={async(checked) => {
               try{
@@ -106,6 +103,7 @@ class HomePage extends React.Component {
                 this.props.form.setFieldsValue({
                   acceptOrderStatus:userData===0?false:true
                 });
+               if(userData===1) Toast.success('设置接单成功', 1);
                 this.props.setWhetherOrder(userData)
               }catch(err){
                 console.log(err)
