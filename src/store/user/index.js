@@ -33,7 +33,7 @@ function userInfo (state=userDefault,action){
 			let newState={
 				...state,
         ...action.data,
-        loginFlag:action.data.accountId.trim()!=='',
+        loginFlag:action.data.accountId!=='',
       }
       let logState={
         accountId:newState.accountId,
