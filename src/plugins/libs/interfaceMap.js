@@ -2,7 +2,7 @@
 * 接口Map
 */
 export const CLIENT_INTERFACE = {
-    LOGIN: '/login',//登录
-    CHECK_IS_LOGIN:'/checkIsLogin',//检测是否登录
-    SET_ACCEPT_ORDER_STATUS:'/setAcceptOrderStatus'//是否去接单
+    LOGIN: '/admin/login',//登录
+    CHECK_IS_LOGIN:'/admin/checkIsLogin',//检测是否登录
+    SET_ACCEPT_ORDER_STATUS:'/foreignStaff/setAcceptOrderStatus'//是否去接单
 };
