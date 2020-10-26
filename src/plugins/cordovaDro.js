@@ -17,64 +17,63 @@
  * under the License.
  */
 
-// Wait for the deviceready event before using any of Cordova's device APIs.
-// See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
-// document.addEventListener('deviceready', onDeviceReady, false);
+/*
+ * Wait for the deviceready event before using any of Cordova's device APIs.
+ * See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
+ * document.addEventListener('deviceready', onDeviceReady, false);
+ */
 
-export const  onDeviceReadyConfirm=()=>{
-    navigator.notification.confirm(
-      '我是测试8下cordova-plugin-dialogs', // message
-      onConfirm, // callback
-      '测试DIALOGS',  // title
-      ['确定','取消'] // buttonName
+export const onDeviceReadyConfirm = () => {
+  navigator.notification.confirm(
+    '我是测试8下cordova-plugin-dialogs', // message
+    onConfirm, // callback
+    '测试DIALOGS', // title
+    ['确定', '取消'], // buttonName
   );
-}
+};
 
-export const  onDeviceReadyAlert=()=>{
+export const onDeviceReadyAlert = () => {
   navigator.notification.alert(
-    '我是测试下cordova-plugin-dialogs',  // message
-    onConfirm,         // callback
-    '测试DIALOGS',            // title
-    '我知道了' // buttonName
-);
-}
+    '我是测试下cordova-plugin-dialogs', // message
+    onConfirm, // callback
+    '测试DIALOGS', // title
+    '我知道了', // buttonName
+  );
+};
 
-const onConfirm=(buttonIndex)=> {
+const onConfirm = (buttonIndex) => {
   // 点击按钮后的回调
-  if(buttonIndex===1){
-    alert('我点击的按钮是' + buttonIndex);
+  if (buttonIndex === 1) {
+    alert(`我点击的按钮是${buttonIndex}`);
   }
-  console.log(buttonIndex)
-}
+  console.log(buttonIndex);
+};
 
 /**
  *
  */
 
-export const cameraGetPicture=()=>{
-  navigator.camera.getPicture(onSuccess, onFail, { quality: 50,targetWidth:500,targetHeight:500});
-}
+export const cameraGetPicture = () => {
+  navigator.camera.getPicture(onSuccess, onFail, { quality: 50, targetWidth: 500, targetHeight: 500 });
+};
 
 function onSuccess(imageURI) {
-  var image = document.getElementById('myImage');
+  const image = document.getElementById('myImage');
   image.src = imageURI;
 }
 
 function onFail(message) {
-  alert('getPicture Failed because: ' + message);
+  alert(`getPicture Failed because: ${message}`);
 }
 
-
-export const cameraCleanup=()=>{
+export const cameraCleanup = () => {
   navigator.camera.cleanup(onSuccess1, onFail1);
-}
-
-
+};
 
 function onSuccess1() {
-    console.log("cleanup")
+  console.log('cleanup');
 }
 
 function onFail1(message) {
-    alert(' cleanup Failed because: ' + message);
+  alert(` cleanup Failed because: ${message}`);
 }

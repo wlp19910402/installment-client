@@ -1,8 +1,8 @@
-import {createStore,combineReducers}from 'redux'
+import { createStore, combineReducers } from 'redux';
 
-import user from '@/store/user'
+import user from '@/store/user';
 
-let arr = combineReducers({
-	user:user
-})
+const arr = combineReducers({
+  user,
+});
 export default createStore(arr);

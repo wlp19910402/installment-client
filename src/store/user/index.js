@@ -1,7 +1,8 @@
-
-import {USER_IDNTITY} from '@/plugins/resurceStatus/user'
-import {SET_USER_INFO,CLEAR_USER_INFO,SET_REDIRECT,SET_ACCEPT_ORDER_STATUS}from '@/store/actions'
-import {removeStorage,setStorage}from '@/plugins/common/storage'
+import { USER_IDNTITY } from '@/plugins/resurceStatus/user';
+import {
+  SET_USER_INFO, CLEAR_USER_INFO, SET_REDIRECT, SET_ACCEPT_ORDER_STATUS,
+} from '@/store/actions';
+import { removeStorage, setStorage } from '@/plugins/common/storage';
 /**
  *
  * @param {*} accountId:账号ID
@@ -15,52 +16,55 @@ import {removeStorage,setStorage}from '@/plugins/common/storage'
  * @param {*} position:登录者的职位
  * @param {*} acceptOrderStatus:是否接单，在外勤人员需要，默认是 0 是不接单，1 是接单，
  */
-const userDefault= {
-  accountId:'18880000000',
-  accountType:USER_IDNTITY.BANK_STAFF,
-  token:null,
-  loginFlag:false,
-  redirectPath:'/main/home',
-  userName:"尚未登录",
-  department:"测试部门",
-  companyUnit:"默认单位",
-  position:"默认职位",
-  acceptOrderStatus:0
-}
-function userInfo (state=userDefault,action){
-	switch(action.type){
-		case SET_USER_INFO:
-			let newState={
-				...state,
+const userDefault = {
+  accountId: '18880000000',
+  accountType: USER_IDNTITY.BANK_STAFF,
+  token: null,
+  loginFlag: false,
+  redirectPath: '/main/home',
+  userName: '尚未登录',
+  department: '测试部门',
+  companyUnit: '默认单位',
+  position: '默认职位',
+  acceptOrderStatus: 0,
+};
+function userInfo(state = userDefault, action) {
+  switch (action.type) {
+    case SET_USER_INFO:{
+      const newState = {
+        ...state,
         ...action.data,
-        loginFlag:action.data.accountId!=='',
-      }
-      let logState={
-        accountId:newState.accountId,
-        accountType:newState.accountType,
-        token:newState.token
-      }
-      setStorage('storageUserInfo',logState)
-			return newState;
-		case CLEAR_USER_INFO:
-      removeStorage('storageUserInfo')
-      return userDefault;
-    case SET_REDIRECT:
-      let setRedirectState={
-        ...state,
-        redirectPath:action.data
-      }
-      return setRedirectState;
-    case SET_ACCEPT_ORDER_STATUS:{
-      let setRedirectState={
-        ...state,
-        acceptOrderStatus:action.data
-      }
-      return setRedirectState
+        loginFlag: action.data.accountId !== '',
+      };
+      const logState = {
+        accountId: newState.accountId,
+        accountType: newState.accountType,
+        token: newState.token,
+      };
+      setStorage('storageUserInfo', logState);
+      return newState;
     }
-		default:
-			return state;
-	}
+    case CLEAR_USER_INFO:{
+      removeStorage('storageUserInfo');
+      return userDefault;
+    }
+    case SET_REDIRECT:{
+      const setRedirectState = {
+        ...state,
+        redirectPath: action.data,
+      };
+      return setRedirectState;
+    }
+    case SET_ACCEPT_ORDER_STATUS: {
+      const setOrderStatus = {
+        ...state,
+        acceptOrderStatus: action.data,
+      };
+      return setOrderStatus;
+    }
+    default:
+      return state;
+  }
 }
 
-export default userInfo
+export default userInfo;

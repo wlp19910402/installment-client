@@ -1,12 +1,11 @@
-
 /**
  * 主页面中的 "首页" "任务" "我的" 三个主页面
  */
-import React from 'react'
-import Home from '@/components/main/Home'
-import My from '@/components/main/My'
-import Task from '@/components/main/Task'
-import {HomeOutlined,UserOutlined,CopyOutlined } from '@ant-design/icons'
+import React from 'react';
+import Home from '@/components/main/Home';
+import My from '@/components/main/My';
+import Task from '@/components/main/Task';
+import { HomeOutlined, UserOutlined, CopyOutlined } from '@ant-design/icons';
 /**
  * main页面，的值
  * @param {*} type:类型
@@ -15,44 +14,28 @@ import {HomeOutlined,UserOutlined,CopyOutlined } from '@ant-design/icons'
  * @param {*} icon:下边按钮的图标
  * @param {*} component:body位置的组件
  */
-export const mainPageMap=[
+export const mainPageMap = [
   {
-    type:'home',
-    title:"首页",
-    headerName:"首页",
-    icon:()=>(
-      <HomeOutlined className="mainIcon"/>
-    ),
-    component:(that)=>(
-      <Home parent={that}/>
-    )
+    type: 'home',
+    title: '首页',
+    headerName: '首页',
+    icon(){return (<HomeOutlined className="mainIcon" />)},
+    component (that) {return (<Home parent={ that } />)}
   },
   {
-    type:'task',
-    title:"任务",
-    headerName:"任务列表",
-    icon:()=>(
-      <CopyOutlined className="mainIcon"/>
-    ),
-    component:(that)=>(
-      <Task  parent={that}/>
-    )
+    type: 'task',
+    title: '任务',
+    headerName: '任务列表',
+    icon () { return (<CopyOutlined className="mainIcon" />) },
+    component (that) {return (<Task parent={ that } />)}
   },
   {
-    type:'my',
-    title:"我的",
-    headerName:"个人中心",
-    icon:()=>(
-      <UserOutlined className="mainIcon"/>
-    ),
-    component:(that)=>(
-      <My parent={that}/>
-    )
-  }
-]
+    type: 'my',
+    title: '我的',
+    headerName: '个人中心',
+    icon () { return (<UserOutlined className="mainIcon" />) },
+    component (that) {return (<My parent={ that } />)}
+  },
+];
 
-export const mainTypeMatch=(type)=>{
-  return mainPageMap.find(res=>{
-    return res.type===type
-  })||mainPageMap[0]
-}
+export const mainTypeMatch = (type) => mainPageMap.find((res) => res.type === type) || mainPageMap[0];
