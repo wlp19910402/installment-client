@@ -18,7 +18,6 @@ class HomePage extends React.Component {
       subTextWith: `${window.innerWidth - 100}px`,
     };
   }
-
   render() {
     return (
       <div className="qm-fill-width qm-main-home">
@@ -43,7 +42,6 @@ class HomePage extends React.Component {
               <WhiteSpace size="md" />
             </div>
           ) : null}
-
           {['1', '2', '3', '4', '5'].map((item) => (
             <div key={item}>
               <List>
