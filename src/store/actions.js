@@ -1,4 +1,6 @@
 /**
+ * 全局状态管理的方法名称
+ *
  * 针对修改redux值的所有action的方法名称
  */
 export const SET_USER_INFO = 'set_user_info'; // 设置用户登录的信息
