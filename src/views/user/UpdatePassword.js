@@ -7,7 +7,6 @@ import {
 } from 'antd-mobile';
 import NavHeader from '@/components/common/NavHeader';
 import { createForm } from 'rc-form';
-// import {regexp} from '@/plugins/common/regexp'
 import { CLEAR_USER_INFO } from '@/store/actions';
 import { connect } from 'react-redux';
 import { CLIENT_INTERFACE } from '@/plugins/libs/interfaceMap';

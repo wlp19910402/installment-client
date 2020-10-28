@@ -3,7 +3,7 @@ import {
   Card, WingBlank, WhiteSpace, ImagePicker, SegmentedControl, Button,
 } from 'antd-mobile';
 import {
-  onDeviceReadyConfirm, onDeviceReadyAlert, cameraCleanup, cameraGetPicture,
+  onDeviceReadyConfirm, onDeviceReadyAlert, cameraCleanup, cameraGetPicture,audioCapture,videoCapture,imageCapture,getPosition,watchPosition,networkInfo
 } from '@/plugins/cordovaDro';
 
 const data = [{
@@ -35,6 +35,7 @@ class Task extends React.Component {
       multiple: index === 1,
     });
   }
+
 
   render() {
     const { files } = this.state;
@@ -74,11 +75,42 @@ class Task extends React.Component {
           <WhiteSpace size="md" />
           <Button onClick={onDeviceReadyAlert}>Cordova Dialog Alert</Button>
           <WhiteSpace size="md" />
-          <Button onClick={cameraGetPicture}>Cordova Camera GetPicture</Button>
+          <Button onClick={ cameraGetPicture }>拍照</Button>
+          <img style={ { width: '200px', height: '200px' } } id="myImage" src="#" alt="未知的" />
+          <WhiteSpace size="lg" />
+          <span id="myImageText">22221</span>
+
           <WhiteSpace size="md" />
           <Button onClick={cameraCleanup}>Cordova Camera Cleanup</Button>
+          <Button onClick={this.onSpan}>点击</Button>
+          <Card>
+            <Card.Body>
+          <Button id = "audioCapture" onClick={audioCapture}>AUDIO音频</Button>
+          <Button id = "imageCapture" onClick={imageCapture}>IMAGE图片</Button>
+          <Button id = "videoCapture" onClick={videoCapture}>VIDEO视频</Button>
+            </Card.Body>
+          </Card>
+          <WhiteSpace size="lg" />
+         <Card>
+            <Card.Body>
+              <Button id = "getPosition" onClick={getPosition}>CURRENT POSITION 获取位置</Button>
+              <Button id = "watchPosition" onClick={watchPosition}>WATCH POSITION 监听位置</Button>
+            </Card.Body>
+          </Card>
+          <p id="getPositionText"></p>
+           <WhiteSpace size="lg" />
+          <p id="watchPositionText"></p>
+          <WhiteSpace size="lg" />
+           <WhiteSpace size="lg" />
+          <Card>
+            <Card.Body>
+               <video id="video" controls="controls"  style={ { width: '200px', height: '200px' } }>
+                您的浏览器不支持 video 标签。
+              </video>
 
-          <img style={{ width: '200px', height: '200px' }} id="myImage" src="#" alt="未知的" />
+            </Card.Body></Card>
+          <WhiteSpace size="lg" />
+           <button id = "networkInfo" onClick={networkInfo}>INFO</button>
         </WingBlank>
       </div>
     );

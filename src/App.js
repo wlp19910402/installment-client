@@ -2,7 +2,6 @@ import React from "react";
 import { HashRouter as Router, Route } from "react-router-dom";
 import Routers from "@/plugins/libs/routerMap";
 import { connect } from "react-redux";
-import { SET_USER_INFO, SET_REDIRECT } from "@/store/actions";
 import { fetchCheckLogin } from "@/store/actions/user";
 import Main from "@/views/Main";
 import Login from "@/views/Login";
@@ -35,26 +34,8 @@ class App extends React.Component {
 }
 App.propTypes = {
   user: PropTypes.object,
-  setUserInfo: PropTypes.func,
-  setRedirectPath: PropTypes.func,
 };
-export default connect(
-  (state, props) => ({
-    ...props,
-    ...state,
-  }),
-  {
-    setUserInfo(data) {
-      return {
-        type: SET_USER_INFO,
-        data,
-      };
-    },
-    setRedirectPath(data) {
-      return {
-        type: SET_REDIRECT,
-        data,
-      };
-    },
-  }
-)(App);
+export default connect((state, props) => ({
+  ...props,
+  ...state,
+}))(App);
