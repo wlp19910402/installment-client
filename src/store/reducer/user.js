@@ -8,7 +8,6 @@ import { removeStorage, setStorage } from '@/plugins/common/storage';
  * @param {*} accountId:账号ID
  * @param {*} accountType:账号类型，分为经办人员和外勤人员
  * @param {*} token:登录之后的token值
- * @param {*} loginFlag:是否已经登录,登录标识
  * @param {*} redirectPath:重定向地址
  * @param {*} userName:登录者的名字
  * @param {*} department:登录者的部门
@@ -17,10 +16,9 @@ import { removeStorage, setStorage } from '@/plugins/common/storage';
  * @param {*} acceptOrderStatus:是否接单，在外勤人员需要，默认是 0 是不接单，1 是接单，
  */
 const userDefault = {
-  accountId: '18880000000',
+  accountId: '',
   accountType: USER_IDNTITY.BANK_STAFF,
-  token: null,
-  loginFlag: false,
+  token: "",
   redirectPath: '/main/home',
   userName: '尚未登录',
   department: '测试部门',
@@ -28,13 +26,13 @@ const userDefault = {
   position: '默认职位',
   acceptOrderStatus: 0,
 };
+
 function userInfo(state = userDefault, action) {
   switch (action.type) {
-    case SET_USER_INFO:{
+    case SET_USER_INFO: {
       const newState = {
         ...state,
-        ...action.data,
-        loginFlag: action.data.accountId !== '',
+        ...action.data
       };
       const logState = {
         accountId: newState.accountId,
@@ -49,18 +47,10 @@ function userInfo(state = userDefault, action) {
       return userDefault;
     }
     case SET_REDIRECT:{
-      const setRedirectState = {
-        ...state,
-        redirectPath: action.data,
-      };
-      return setRedirectState;
+      return Object.assign({},state,{redirectPath: action.data});
     }
     case SET_ACCEPT_ORDER_STATUS: {
-      const setOrderStatus = {
-        ...state,
-        acceptOrderStatus: action.data,
-      };
-      return setOrderStatus;
+      return Object.assign({},state,{acceptOrderStatus: action.data});
     }
     default:
       return state;
