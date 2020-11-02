@@ -3,6 +3,7 @@ import Login from '@/views/Login';
 import Main from '@/views/Main';
 import Contact from '@/views/user/Contact';
 import UpdatePassword from '@/views/user/UpdatePassword';
+// import {USER_IDNTITY}from  '@/plugins/resurceStatus/user';
 /**
  * 路由表
  * @param {*} path:地址
@@ -10,44 +11,36 @@ import UpdatePassword from '@/views/user/UpdatePassword';
  * @param {*} component:组件
  * @param {*} loginFlag:是否需要登录,登录标识
  * @param {*} exact:子集路由下包含此等组件
- * @param {*} back:是否又返回键
+ * @param {*} hasBack:是否又返回键
+ * @param {*} identity:身份 --待定哦
  */
-const routerMap = [
-  {
-    path: '/', name: '测试', component: Test, loginFlag: true, exact: true, back: false,
-  },
-  {
-    path: '/login', name: '登录', component: Login, loginFlag: false, exact: true, back: false,
-  },
-  {
-    path: '/main/:type', name: '主要的', component: Main, loginFlag: true, exact: false, back: false,
-  },
-  {
-    path: '/user/contact', name: '联系客服', component: Contact, loginFlag: true, exact: true, back: true,
-  },
-  {
-    path: '/user/updatePassword', name: '修改密码', component: UpdatePassword, loginFlag: true, exact: true, back: true,
-  },
-];
-
-export const routerMatch = (path) => {
-  const pathArr = path.split('/');
-  const regexp = /^:\w+/i;
-  const matchRes = routerMap.find((res) => {
-    const itemArr = res.path.split('/');
+class Res{
+  constructor(path,name,component,loginFlag=true,exact=true,hasBack=true,) {
+    this.path = path
+    this.name = name
+    this.component = component
+    this.loginFlag = loginFlag
+    this.exact = exact
+    this.hasBack = hasBack
+  }
+  //根据路径进行匹配当前的路由的基本信息
+  match (path) {
+    const pathArr = path.split('/');
+    const regexp = /^:\w+/i;
+    const itemArr = this.path.split('/');
     itemArr.forEach((str, index) => {
       if (regexp.test(str)) {
         itemArr[index] = pathArr[index];
       }
     });
-    if (JSON.stringify(itemArr) === JSON.stringify(pathArr)) {
-      return res;
-    }
-    return false;
-  });
-  if (matchRes) {
-    return matchRes;
+    return JSON.stringify(itemArr) === JSON.stringify(pathArr)
   }
-  return null;
-};
+}
+const routerMap = [
+  new Res('/','测试',Test,true,true,false),
+  new Res('/login','登录',Login,false,true,false),
+  new Res('/main/:type','主要的',Main,true,false,false),
+  new Res('/user/contact', '联系客服', Contact),
+  new Res('/user/updatePassword','修改密码',UpdatePassword)
+];
 export default routerMap;

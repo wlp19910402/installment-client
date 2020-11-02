@@ -35,7 +35,7 @@ export const fetchCheckLogin = async () => async (dispatch, getState) => {
     const { hash } = window.location;
     const path = hash.substring(1, hash.length);
     // 用户是否已经登录过了
-    if (getState().user.accountId.trim()!=='') {
+  if (getState().user.accountId.trim() !== '') {
       if (path === "/login") {
         window.location.hash = "#/main/home";
       }

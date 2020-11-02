@@ -1,14 +1,11 @@
 import Axios from 'axios';
 import { getStorage } from '@/plugins/common/storage';
-
 const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : '';
-
 const axios = Axios.create({
   baseURL: baseUrl,
   timeout: 2000,
   headers: { 'Content-Type': 'application/json; charset=UTF-8' },
 });
-
 // 请求前干点事情，加上账号id和类型，token在头部
 axios.interceptors.request.use((config) => {
   // 从localstorage中拿数据

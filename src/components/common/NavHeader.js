@@ -1,7 +1,6 @@
 import { NavBar, Icon } from 'antd-mobile';
 import React, { Component } from 'react';
-
-import { routerMatch } from '@/plugins/libs/routerMap';
+import routerMap from '@/plugins/libs/routerMap';
 import PropTypes from 'prop-types';
 
 class NavHeaderCmp extends Component {
@@ -12,15 +11,14 @@ class NavHeaderCmp extends Component {
       back: true,
     };
   }
-
   componentDidMount() {
     const { hash } = window.location;
     const path = hash.substring(1, hash.length);
-    const pathList = routerMatch(path);
+    const pathList = routerMap.find(res=>res.match(path));
     if (pathList) {
       this.setState({
         title: pathList.name || '装修分期',
-        back: pathList.back,
+        back: pathList.hasBack,
       });
     }
   }

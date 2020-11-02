@@ -192,10 +192,10 @@ export function getPosition() {
       alert(retua);
 
      document.getElementById('getPositionText').innerHTML=retua
-   };
+   }
 
    function onError(error) {
-      alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+      alert('code: '+ error.code + '\nmessage:' + error.message + '\n');
    }
 }
 
@@ -218,9 +218,9 @@ export function watchPosition() {
         'Timestamp: ' + position.timestamp + '\n'
       alert(positionT);
      document.getElementById('watchPositionText').innerHTML=positionT
-   };
+   }
    function onError(error) {
-      alert('code: '    + error.code    + '\n' +'message: ' + error.message + '\n');
+      alert('code: '    + error.code + '\nmessage: ' + error.message + '\n');
    }
 }
 
@@ -243,10 +243,10 @@ export function networkInfo() {
    alert('Connection type: ', + networkState);
 }
 
-function onOffline() {
-   alert('You are now offline!');
-}
+// function onOffline() {
+//    alert('You are now offline!');
+// }
 
-function onOnline() {
-   alert('You are now online!');
-}
+// function onOnline() {
+//    alert('You are now online!');
+// }

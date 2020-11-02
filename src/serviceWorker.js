@@ -17,6 +17,7 @@
  */
 
 function registerValidSW(swUrl, config) {
+  alert(11);
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {
@@ -34,7 +35,7 @@ function registerValidSW(swUrl, config) {
                * content until all client tabs are closed.
                */
               console.log(
-                "New content is available and will be used when all " +
+                "New content is available and will be used when all 2222" +
                   "tabs for this page are closed. See https://bit.ly/CRA-PWA."
               );
 
