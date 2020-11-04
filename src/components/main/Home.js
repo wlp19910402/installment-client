@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Card, WingBlank, WhiteSpace, List, Badge,
+  Card, WingBlank, WhiteSpace, List, Badge
 } from 'antd-mobile';
 import { connect } from 'react-redux';
 import banner from '@/assets/img/home-banner.png';
@@ -23,7 +23,7 @@ class HomePage extends React.Component {
       <div className="qm-fill-width qm-main-home">
         <WingBlank size="md">
           <WhiteSpace size="md" />
-          <Card><img src={banner} alt="banner" /></Card>
+          <Card><img src={ banner } alt="banner" /></Card>
           <WhiteSpace size="md" />
           {this.props.user.accountType === USER_IDNTITY.BANK_STAFF ? (
             <div>
@@ -32,7 +32,7 @@ class HomePage extends React.Component {
                   arrow="horizontal"
                   thumb={this.state.icon()}
                   multipleLine
-                  onClick={() => {}}
+                  onClick={() => {this.props.parent.props.history.push('/bankStaff/release')}}
                 >
                   {this.state.title}
                   {' '}
@@ -66,7 +66,8 @@ class HomePage extends React.Component {
   }
 }
 HomePage.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
+  parent: PropTypes.object
 }
 
 export default connect((state, props) => ({

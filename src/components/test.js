@@ -35,11 +35,9 @@ class Cmp1 extends Component {
     super(...args);
     this.state = { users: [] };
   }
-
     handleClick() {
       Toast.info('This is a toast tips !!!', 1);
     }
-
     toLogin() {
       this.props.history.push('/login');
     }

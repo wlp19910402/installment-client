@@ -58,11 +58,15 @@
 /* z-index*/
 /*actonsheet 会放到 popup / modal 中*/
 /*modal.alert 应该最大，其他应该较小*/
+@import 'http://at.alicdn.com/t/font_2179338_8s0z298nbo9.css';
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.qm-margin-null {
+  margin: 0 !important;
 }
 .qm-text-primary {
   color: #77CC99;
@@ -72,6 +76,18 @@ body {
 }
 .qm-text-error {
   color: #f4333c;
+}
+.qm-text-base {
+  color: #333;
+}
+.qm-text-placeholder {
+  color: #bbb;
+}
+.qm-text-secondary {
+  color: #a4a9b0;
+}
+.qm-text-disabled {
+  color: #bbb;
 }
 .qm-text-wait {
   color: #108ee9;
@@ -87,6 +103,42 @@ body {
 }
 .qm-bg-wait {
   background-color: #108ee9;
+}
+.qm-address-search {
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  left: 5%;
+  top: 60px;
+  z-index: 100;
+  width: 90%;
+  box-sizing: border-box;
+}
+.qm-address-search .am-button {
+  background-color: transparent;
+}
+.qm-address-search .am-list-item.am-input-item {
+  background-color: transparent;
+}
+.qm-address-search .am-input-item {
+  margin: 0;
+  padding: 0;
+}
+.qm-address-search .am-input-item .am-flexbox {
+  max-width: 100%;
+  border-right: 1px solid #999;
+  padding: 0 4px 0 10px;
+}
+.qm-address-search .am-input-item .am-flexbox .am-flexbox-item {
+  overflow: hidden;
+  margin: 0;
+}
+.qm-address-search .am-input-item .am-flexbox .am-flexbox-item .qm-body-2 {
+  padding: 0 4px;
+  text-align: center;
+}
+.qm-address-search .am-input-item input {
+  font-size: 14px;
 }
 .qm-main-my-header {
   padding-top: 10px;
@@ -137,6 +189,9 @@ body {
 .qm-body-1 {
   font-size: 12px;
 }
+.qm-body-2 {
+  font-size: 14px;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
@@ -159,6 +214,17 @@ code {
 .qm-main-home .am-list-item img {
   width: 2.2rem;
   height: 2.2rem;
+}
+.qm-fixed-page {
+  background-color: #fff;
+  box-sizing: border-box;
+  padding-top: 45px;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  width: 100%;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 /*登录页面*/
 .qm-login-page {

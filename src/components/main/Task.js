@@ -61,7 +61,7 @@ class Task extends React.Component {
             <SegmentedControl
               values={['切换到单选', '切换到多选']}
               selectedIndex={this.state.multiple ? 1 : 0}
-              onChange={this.onSegChange}
+              onChange={this.onSegChange.bind(this)}
             />
             <ImagePicker
               files={files}

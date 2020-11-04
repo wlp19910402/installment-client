@@ -1,4 +1,5 @@
 @import './theme.less';
+@import 'http://at.alicdn.com/t/font_2179338_8s0z298nbo9.css';
 
 body {
   margin: 0;
@@ -8,7 +9,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.qm-margin-null{
+  margin: 0 !important;
+}
 .qm-text-primary {
   color: @brand-primary
 }
@@ -20,7 +23,18 @@ body {
 .qm-text-error {
   color: @brand-error
 }
-
+.qm-text-base{
+  color:@color-text-base
+}
+.qm-text-placeholder {
+  color:@color-text-placeholder
+}
+.qm-text-secondary {
+  color:@color-text-secondary
+}
+.qm-text-disabled {
+  color:@color-text-disabled
+}
 .qm-text-wait {
   color: @brand-wait
 }
@@ -40,7 +54,42 @@ body {
 .qm-bg-wait {
   background-color: @brand-wait
 }
-
+.qm-address-search{
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  left: 5%;
+  top: 60px;
+  z-index: 100;
+  width: 90%;
+  box-sizing: border-box;
+  .am-button {
+    background-color: transparent;
+  }
+  .am-list-item.am-input-item{
+    background-color: transparent;
+  }
+  .am-input-item{
+    margin: 0;
+    padding:0;
+    .am-flexbox{
+      max-width: 100%;
+      border-right:1px solid #999;
+      padding:0 4px 0 10px;
+      .am-flexbox-item{
+        overflow: hidden;
+        margin:0;
+        .qm-body-2 {
+          padding: 0 4px;
+          text-align: center;
+        }
+      }
+    }
+    input{
+      font-size:@font-size-base;
+    }
+  }
+}
 .qm-main-my-header {
   padding-top: 10px;
   background-color: #f5f5f9;
@@ -100,7 +149,9 @@ body {
 .qm-body-1 {
   font-size: @font-size-caption-sm;
 }
-
+.qm-body-2{
+ font-size: @font-size-base
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -132,7 +183,17 @@ code {
     }
   }
 }
-
+.qm-fixed-page{
+  background-color: @fill-base;
+  box-sizing: border-box;
+  padding-top: 45px;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  width: 100%;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
 /*登录页面*/
 .qm-login-page {
   background-color: @fill-base;

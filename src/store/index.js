@@ -12,7 +12,9 @@ let curl = store.getState()
 store.subscribe(async() => {
   let pre = curl
   curl = store.getState()
+  console.log("store变化了")
   if (pre.user.token !== curl.user.token) {
+    console.log("token不相等，要调用哦")
     if (curl.user.token) {
       await watchRefreshTime();
     }

@@ -3,6 +3,8 @@ import Login from '@/views/Login';
 import Main from '@/views/Main';
 import Contact from '@/views/user/Contact';
 import UpdatePassword from '@/views/user/UpdatePassword';
+import ReleaseTask from '@/views/bankStaff/release'
+import BaiduMap from '@/views/other/BaiduMap'
 // import {USER_IDNTITY}from  '@/plugins/resurceStatus/user';
 /**
  * 路由表
@@ -41,6 +43,8 @@ const routerMap = [
   new Res('/login','登录',Login,false,true,false),
   new Res('/main/:type','主要的',Main,true,false,false),
   new Res('/user/contact', '联系客服', Contact),
-  new Res('/user/updatePassword','修改密码',UpdatePassword)
+  new Res('/user/updatePassword', '修改密码', UpdatePassword),
+  new Res('/bankStaff/release', '发布任务', ReleaseTask),
+  new Res('/baiduMap','地址搜索',BaiduMap)
 ];
 export default routerMap;
