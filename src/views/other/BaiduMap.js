@@ -14,6 +14,7 @@ class BaiduMap extends React.Component {
   }
   componentDidMount(){
     this.renderMap()
+    document.body.querySelector('.qm-fixed-page').style.height = `${window.innerHeight}px`;
   }
   //初始化地图的方法
   renderMap () {
@@ -25,8 +26,6 @@ class BaiduMap extends React.Component {
     this.map.addOverlay(marker);             // 将标注添加到地图中
     marker.disableDragging();           // 不可拖拽
     // marker.enableDragging(); //marker可拖拽
-
-
 
 
 
