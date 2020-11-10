@@ -4,8 +4,6 @@ import Main from '@/views/Main';
 import Contact from '@/views/user/Contact';
 import UpdatePassword from '@/views/user/UpdatePassword';
 import ReleaseTask from '@/views/bankStaff/release'
-import BaiduMap from '@/views/other/BaiduMap'
-import GaodeMap from '@/views/other/GaodeMap'
 import MapView from '@/views/other/MapView'
 
 // import {USER_IDNTITY}from  '@/plugins/resurceStatus/user';
@@ -41,15 +39,27 @@ class Res{
     return JSON.stringify(itemArr) === JSON.stringify(pathArr)
   }
 }
-const routerMap = [
+const commonRouter = [
   new Res('/','测试',Test,true,true,false),
   new Res('/login','登录',Login,false,true,false),
+  new Res('/mapView/:place','位置信息',MapView,false)
+]
+
+//经办人员的routerMap
+const bankRouterMap = [
+  ...commonRouter,
   new Res('/main/:type','主要的',Main,true,false,false),
   new Res('/user/contact', '联系客服', Contact),
   new Res('/user/updatePassword', '修改密码', UpdatePassword),
-  new Res('/bankStaff/release', '发布任务', ReleaseTask),
-  new Res('/baiduMap', '百度地址搜索', BaiduMap),
-  new Res('/gaodeMap', '高德地址搜索', GaodeMap),
-  new Res('/mapView/:place','位置',MapView)
-];
-export default routerMap;
+  new Res('/bankStaff/release', '发布任务', ReleaseTask)
+]
+
+//外勤人员的routerMap
+const performRouterMap = [
+  ...commonRouter,
+  new Res('/perform/main/:type','主要的',Main,true,false,false),
+  new Res('/perform/user/contact', '联系客服', Contact),
+  new Res('/perform/user/updatePassword', '修改密码', UpdatePassword)
+]
+export default bankRouterMap;
+export {bankRouterMap,performRouterMap}

@@ -16,7 +16,6 @@
     "qs": "^6.9.4",
     "rc-form": "^2.4.11",
     "react": "^16.14.0",
-    "react-amap": "^1.2.8",
     "react-dom": "^16.14.0",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",

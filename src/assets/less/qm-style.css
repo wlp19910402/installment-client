@@ -58,7 +58,12 @@
 /* z-index*/
 /*actonsheet 会放到 popup / modal 中*/
 /*modal.alert 应该最大，其他应该较小*/
-@import 'http://at.alicdn.com/t/font_2179338_8s0z298nbo9.css';
+@import 'http://at.alicdn.com/t/font_2179338_nwem47408ye.css';
+.qm-word-break {
+  word-break: break-all;
+  word-spacing: normal;
+  white-space: normal;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -186,11 +191,23 @@ body {
 .homeMenuIcon {
   font-size: 24px;
 }
+.btnIcon {
+  font-size: 30px;
+}
 .qm-body-1 {
   font-size: 12px;
 }
 .qm-body-2 {
   font-size: 14px;
+}
+.qm-body-3 {
+  font-size: 15px;
+}
+.qm-body-4 {
+  font-size: 16px;
+}
+.qm-body-5 {
+  font-size: 17px;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;

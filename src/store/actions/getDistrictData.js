@@ -1,28 +1,36 @@
 const axios = require('axios')
 const AMAP_Key = "b1b79dacf4aa6fd369f1265848f3c384"
-
-// 根据地址名称获取经纬度
-export async function getGeocode (address) {
-  try {
-    let res = await  axios.get('https://restapi.amap.com/v3/geocode/geo', {
-    params: {
-      address,
-      output:JSON,
-      key:AMAP_Key
-      }
-    })
-    if (res.data.status === '1') {
-      let geocodes = res.data.geocodes[0].location
-      console.log(geocodes)
-      return geocodes
-    }
-    return ''
-  } catch(err) {
-    console.log(err)
-    return ''
-  }
-}
-// 请求区域
+/*
+* @description  根据高德地图web，根据地址名称获取经纬度
+* @param   address  中文地址名称
+* @param   key  地址的key值
+* @return  object
+*/
+// export async function getGeocode (address) {
+//   try {
+//     let res = await  axios.get('https://restapi.amap.com/v3/geocode/geo', {
+//     params: {
+//       address,
+//       output:JSON,
+//       key:AMAP_Key
+//       }
+//     })
+//     if (res.data.status === '1') {
+//       let geocodes = res.data.geocodes[0].location
+//       console.log(geocodes)
+//       return geocodes
+//     }
+//     return ''
+//   } catch(err) {
+//     console.log(err)
+//     return ''
+//   }
+// }
+/*
+* @description  根据高德地图web，进行请求行政区域区域
+* @param   arr  要排序的json数组对象
+* @return  array
+*/
 export async function getDistrictData () {
   try {
     let res = await  axios.get('https://restapi.amap.com/v3/config/district', {
