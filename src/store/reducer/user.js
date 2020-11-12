@@ -1,8 +1,6 @@
-import { USER_IDNTITY } from '@/plugins/resurceStatus/user';
-import {
-  SET_USER_INFO, CLEAR_USER_INFO, SET_REDIRECT, SET_ACCEPT_ORDER_STATUS,
-} from '@/store/actions';
-import { removeStorage, setStorage } from '@/plugins/common/storage';
+import { USER_IDNTITY } from "@/plugins/resurceStatus/user";
+import { SET_USER_INFO, CLEAR_USER_INFO, SET_REDIRECT, SET_ACCEPT_ORDER_STATUS } from "@/store/actions";
+import { removeStorage, setStorage } from "@/plugins/common/storage";
 /**
  *
  * @param {*} accountId:账号ID
@@ -16,14 +14,14 @@ import { removeStorage, setStorage } from '@/plugins/common/storage';
  * @param {*} acceptOrderStatus:是否接单，在外勤人员需要，默认是 0 是不接单，1 是接单，
  */
 const userDefault = {
-  accountId: '',
+  accountId: "",
   accountType: USER_IDNTITY.BANK_STAFF,
   token: "",
-  redirectPath: '/main/home',
-  userName: '尚未登录',
-  department: '测试部门',
-  companyUnit: '默认单位',
-  position: '默认职位',
+  redirectPath: "/main/home",
+  userName: "尚未登录",
+  department: "测试部门",
+  companyUnit: "默认单位",
+  position: "默认职位",
   acceptOrderStatus: 0,
 };
 
@@ -32,25 +30,25 @@ function userInfo(state = userDefault, action) {
     case SET_USER_INFO: {
       const newState = {
         ...state,
-        ...action.data
+        ...action.data,
       };
       const logState = {
         accountId: newState.accountId,
         accountType: newState.accountType,
         token: newState.token,
       };
-      setStorage('storageUserInfo', logState);
+      setStorage("storageUserInfo", logState);
       return newState;
     }
-    case CLEAR_USER_INFO:{
-      removeStorage('storageUserInfo');
+    case CLEAR_USER_INFO: {
+      removeStorage("storageUserInfo");
       return userDefault;
     }
-    case SET_REDIRECT:{
-      return Object.assign({},state,{redirectPath: action.data});
+    case SET_REDIRECT: {
+      return Object.assign({}, state, { redirectPath: action.data });
     }
     case SET_ACCEPT_ORDER_STATUS: {
-      return Object.assign({},state,{acceptOrderStatus: action.data});
+      return Object.assign({}, state, { acceptOrderStatus: action.data });
     }
     default:
       return state;

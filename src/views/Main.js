@@ -1,14 +1,13 @@
-
-import { TabBar } from 'antd-mobile';
-import React, { Component } from 'react';
-import NavHeader from '@/components/common/NavHeader';
-import { mainPageMap, mainTypeMatch } from '@/plugins/libs/mainMap';
-import PropTypes from 'prop-types';
+import { TabBar } from "antd-mobile";
+import React, { Component } from "react";
+import NavHeader from "@/components/common/NavHeader";
+import { mainPageMap, mainTypeMatch } from "@/plugins/libs/mainMap";
+import PropTypes from "prop-types";
 class Main extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      selectedTab: 'home',
+      selectedTab: "home",
     };
   }
 
@@ -18,11 +17,11 @@ class Main extends Component {
     });
   }
 
-  componentDidUpdate (old_props, old_state) {
+  componentDidUpdate(old_props, old_state) {
     const old_p_type = old_props.match.params.type;
     const new_p_type = this.props.match.params.type;
     if (old_p_type !== new_p_type) {
-      console.log(old_state)
+      console.log(old_state);
       this.setState({
         selectedTab: mainTypeMatch(this.props.match.params.type).type,
       });
@@ -33,11 +32,7 @@ class Main extends Component {
     return (
       <div className="qm-main-page">
         <NavHeader title={mainTypeMatch(this.props.match.params.type).headerName} />
-        <TabBar
-          unselectedTintColor="#888"
-          tintColor="#77CC99"
-          barTintColor="white"
-        >
+        <TabBar unselectedTintColor="#888" tintColor="#77CC99" barTintColor="white">
           {mainPageMap.map((item, index) => (
             <TabBar.Item
               title={item.title}
@@ -59,6 +54,6 @@ class Main extends Component {
 }
 Main.propTypes = {
   match: PropTypes.object,
-  history:PropTypes.object
-}
+  history: PropTypes.object,
+};
 export default Main;

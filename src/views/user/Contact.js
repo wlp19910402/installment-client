@@ -1,18 +1,18 @@
 /**
  * 联系客服 页面
  */
-import { WhiteSpace } from 'antd-mobile';
-import React, { Component } from 'react';
-import NavHeader from '@/components/common/NavHeader';
-import { mainTypeMatch } from '@/plugins/libs/mainMap';
-import { PhoneFilled } from '@ant-design/icons';
-import PropTypes from 'prop-types';
+import { WhiteSpace } from "antd-mobile";
+import React, { Component } from "react";
+import NavHeader from "@/components/common/NavHeader";
+import { mainTypeMatch } from "@/plugins/libs/mainMap";
+import { PhoneFilled } from "@ant-design/icons";
+import PropTypes from "prop-types";
 
 class Main extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      selectedTab: 'home',
+      selectedTab: "home",
     };
   }
 
@@ -30,12 +30,10 @@ class Main extends Component {
           <WhiteSpace size="lg" />
           <WhiteSpace size="lg" />
           <WhiteSpace size="lg" />
-          <img src={import ('@/assets/img/contact.png')} alt="contactIcon" />
+          <img src={import("@/assets/img/contact.png")} alt="contactIcon" />
           <WhiteSpace size="lg" />
           <span className="qm-text-wait">
-            <PhoneFilled rotate="90" />
-            {' '}
-            010_8787989
+            <PhoneFilled rotate="90" /> 010_8787989
           </span>
         </div>
       </div>
@@ -43,7 +41,7 @@ class Main extends Component {
   }
 }
 Main.propTypes = {
-  match:PropTypes.object
-}
+  match: PropTypes.object,
+};
 
 export default Main;
