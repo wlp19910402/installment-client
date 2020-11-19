@@ -41,14 +41,15 @@ export const mapAppUriArr = [
     name: "百度地图",
     schemeIntent: "com.baidu.BaiduMap",
     jumpuri:
-      "baidumap://map/direction?origin=name:${currentName}|latlng:${currentLat},${currentLon}&destination=${targetName}",
+      "baidumap://map/direction?origin=name:${currentName}|latlng:${currentLat},${currentLon}&destination=${targetName}&coord_type=bd09ll&mode=transit&src=andr.baidu.openAPIdemo",
     device: MOBILE_DEVICE.ANDROID,
   },
   {
     status: MAP_APP_STATUS.BAIDU_MAP,
     name: "百度地图",
     schemeIntent: "baidumap://",
-    jumpuri: "baidumap://map/marker?location=${currentLat},${currentLon}&title=${currentName}&content=${targetName}",
+    jumpuri:
+      "baidumap://map/marker?location=${currentLat},${currentLon}&title=${currentName}&content=${targetName}&src=ios.baidu.openAPIdemo",
     device: MOBILE_DEVICE.IOS,
   },
   {
