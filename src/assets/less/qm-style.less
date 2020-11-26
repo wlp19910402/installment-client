@@ -54,7 +54,9 @@ body {
 .qm-bg-error {
   background-color: @brand-error
 }
-
+.qm-bg-white{
+  background-color: #fff;
+}
 .qm-bg-wait {
   background-color: @brand-wait
 }
@@ -221,14 +223,12 @@ code {
   position: relative;
   height: 100vh;
   overflow: hidden;
-
   &::after {
     content: "";
     position: absolute;
     right: -55vw;
     bottom: -70vw;
     background: @brand-primary-opacity;
-    // background:red;
     width: 140vw;
     height: 140vw;
     border-radius: 50%;
@@ -300,5 +300,81 @@ html:not([data-scale]) .am-list-body::before {
   }
   .am-list-extra{
     flex:1 1
+  }
+}
+
+
+.rc-menu-vertical .rc-menu-submenu-arrow,
+.rc-menu-vertical-left .rc-menu-submenu-arrow,
+.rc-menu-vertical-right .rc-menu-submenu-arrow,
+.rc-menu-inline .rc-menu-submenu-arrow{
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  margin-top: -0.75em;
+}
+.rc-menu-item,
+.rc-menu-submenu-title{
+  white-space: normal !important;
+}
+  .rc-menu-submenu-title{
+    &::before{
+      content: "+";
+      position: absolute;
+      border:1px solid #999;
+      width:1rem;
+      height:1rem;
+      margin-left:-1.4rem;
+      text-align: center;
+      line-height: 0.9rem;
+      font-size: @font-size-caption;
+      top: 50%;
+      color:#999;
+      margin-top: -0.5rem;
+      border-radius: 3px;;
+    }
+  }
+.rc-menu-submenu-open>.rc-menu-submenu-title {
+  &::before {
+    content: "-";
+  }
+}
+.rc-menu{
+  box-shadow: none;
+  padding: 0;
+  border: 0;
+
+.rc-menu-submenu-selected{
+  background-color: @brand-primary-opacity;
+  &>.rc-menu-submenu-title {
+    color:@brand-primary;
+    &::before {
+      border: 1px solid @brand-primary;
+      color:@brand-primary;
+    }
+  }
+}
+.rc-menu-item{
+  &::before{
+    border-radius: 50%;
+  }
+}
+.rc-menu-item-selected{
+  background-color: @brand-primary-opacity;
+  color:@brand-primary;
+   .qm-menu-cir {
+     color: @brand-primary;
+   }
+}
+
+.rc-menu-item-active,
+.rc-menu-submenu-active>.rc-menu-submenu-title {
+    background-color: @brand-primary-opacity;
+  }
+  .qm-menu-cir {
+    color:#999;
+    vertical-align: middle;
+    position: absolute;
+    margin-left: -20px;
   }
 }

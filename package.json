@@ -1,94 +1,95 @@
 {
-  "name": "front-end",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@ant-design/icons": "^4.2.2",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "antd-mobile": "^2.3.4",
-    "axios": "^0.20.0",
-    "babel-plugin-import": "^1.13.1",
-    "http-proxy-middleware": "^1.0.6",
-    "js-base64": "^3.5.2",
-    "prop-types": "^15.7.2",
-    "qs": "^6.9.4",
-    "rc-form": "^2.4.11",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-redux": "^7.2.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
-  },
-  "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build && ((cp -rf ./build/ ../www/) & exit 0)",
-    "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lint": "eslint --ext .js ./src"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "theme": {
-    "brand-primary": "#77CC99",
-    "color-text-base": "#333",
-    "brand-primary-tap": "#66aa88",
-    "brand-warning": "#FF9758"
-  },
-  "homepage": ".",
-  "devDependencies": {
-    "@babel/plugin-proposal-decorators": "^7.12.1",
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-import": "^1.13.1",
-    "customize-cra": "^1.0.0",
-    "eslint": "^7.12.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.14.0",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-babel": "^5.3.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^4.3.0",
-    "less": "^3.12.2",
-    "less-loader": "5.0.0",
-    "lint-staged": "^10.4.2",
-    "prettier": "^2.1.2",
-    "react-app-rewired": "2.0.2-next.0"
-  },
-  "proxy": "http://127.0.0.1:8088",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "name": "front-end",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@ant-design/icons": "^4.2.2",
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.3.2",
+        "@testing-library/user-event": "^7.1.2",
+        "antd-mobile": "^2.3.4",
+        "axios": "^0.20.0",
+        "babel-plugin-import": "^1.13.1",
+        "http-proxy-middleware": "^1.0.6",
+        "js-base64": "^3.5.2",
+        "prop-types": "^15.7.2",
+        "qs": "^6.9.4",
+        "rc-form": "^2.4.11",
+        "rc-menu": "^8.10.0",
+        "react": "^16.14.0",
+        "react-dom": "^16.14.0",
+        "react-redux": "^7.2.1",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "3.4.3",
+        "redux": "^4.0.5",
+        "redux-thunk": "^2.3.0"
+    },
+    "scripts": {
+        "start": "react-app-rewired start",
+        "build": "react-app-rewired build && ((cp -rf ./build/ ../installment/www/) & exit 0)",
+        "test": "react-app-rewired test --env=jsdom",
+        "eject": "react-scripts eject",
+        "lint": "eslint --ext .js ./src"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "theme": {
+        "brand-primary": "#77CC99",
+        "color-text-base": "#333",
+        "brand-primary-tap": "#66aa88",
+        "brand-warning": "#FF9758"
+    },
+    "homepage": ".",
+    "devDependencies": {
+        "@babel/plugin-proposal-decorators": "^7.12.1",
+        "babel-eslint": "^10.1.0",
+        "babel-plugin-import": "^1.13.1",
+        "customize-cra": "^1.0.0",
+        "eslint": "^7.12.0",
+        "eslint-config-airbnb": "^18.2.0",
+        "eslint-config-prettier": "^6.14.0",
+        "eslint-loader": "^4.0.2",
+        "eslint-plugin-babel": "^5.3.1",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-jsx-a11y": "^6.3.1",
+        "eslint-plugin-prettier": "^3.1.4",
+        "eslint-plugin-react": "^7.21.5",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "husky": "^4.3.0",
+        "less": "^3.12.2",
+        "less-loader": "5.0.0",
+        "lint-staged": "^10.4.2",
+        "prettier": "^2.1.2",
+        "react-app-rewired": "2.0.2-next.0"
+    },
+    "proxy": "http://127.0.0.1:8088",
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "src/*.{js,jsx,mjs,ts,tsx}": [
+            "node_modules/.bin/prettier --write",
+            "node_modules/.bin/eslint --fix",
+            "git add"
+        ],
+        "src/*.{css,scss,less,json,html,md,markdown}": [
+            "node_modules/.bin/prettier --write",
+            "git add"
+        ]
     }
-  },
-  "lint-staged": {
-    "src/*.{js,jsx,mjs,ts,tsx}": [
-      "node_modules/.bin/prettier --write",
-      "node_modules/.bin/eslint --fix",
-      "git add"
-    ],
-    "src/*.{css,scss,less,json,html,md,markdown}": [
-      "node_modules/.bin/prettier --write",
-      "git add"
-    ]
-  }
 }

@@ -33,7 +33,7 @@ class Main extends Component {
           <img src={import("@/assets/img/contact.png")} alt="contactIcon" />
           <WhiteSpace size="lg" />
           <span className="qm-text-wait">
-            <PhoneFilled rotate="90" /> 010_8787989
+            <PhoneFilled rotate="90"/> 010_8787989
           </span>
         </div>
       </div>

@@ -106,6 +106,9 @@ body {
 .qm-bg-error {
   background-color: #f4333c;
 }
+.qm-bg-white {
+  background-color: #fff;
+}
 .qm-bg-wait {
   background-color: #108ee9;
 }
@@ -319,4 +322,70 @@ html:not([data-scale]) .am-list-body::before {
 }
 .qm-district-picker .am-list-extra {
   flex: 1 1;
+}
+.rc-menu-vertical .rc-menu-submenu-arrow,
+.rc-menu-vertical-left .rc-menu-submenu-arrow,
+.rc-menu-vertical-right .rc-menu-submenu-arrow,
+.rc-menu-inline .rc-menu-submenu-arrow {
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  margin-top: -0.75em;
+}
+.rc-menu-item,
+.rc-menu-submenu-title {
+  white-space: normal !important;
+}
+.rc-menu-submenu-title::before {
+  content: "+";
+  position: absolute;
+  border: 1px solid #999;
+  width: 1rem;
+  height: 1rem;
+  margin-left: -1.4rem;
+  text-align: center;
+  line-height: 0.9rem;
+  font-size: 16px;
+  top: 50%;
+  color: #999;
+  margin-top: -0.5rem;
+  border-radius: 3px;
+}
+.rc-menu-submenu-open > .rc-menu-submenu-title::before {
+  content: "-";
+}
+.rc-menu {
+  box-shadow: none;
+  padding: 0;
+  border: 0;
+}
+.rc-menu .rc-menu-submenu-selected {
+  background-color: rgba(119, 204, 135, 0.1);
+}
+.rc-menu .rc-menu-submenu-selected > .rc-menu-submenu-title {
+  color: #77CC99;
+}
+.rc-menu .rc-menu-submenu-selected > .rc-menu-submenu-title::before {
+  border: 1px solid #77CC99;
+  color: #77CC99;
+}
+.rc-menu .rc-menu-item::before {
+  border-radius: 50%;
+}
+.rc-menu .rc-menu-item-selected {
+  background-color: rgba(119, 204, 135, 0.1);
+  color: #77CC99;
+}
+.rc-menu .rc-menu-item-selected .qm-menu-cir {
+  color: #77CC99;
+}
+.rc-menu .rc-menu-item-active,
+.rc-menu .rc-menu-submenu-active > .rc-menu-submenu-title {
+  background-color: rgba(119, 204, 135, 0.1);
+}
+.rc-menu .qm-menu-cir {
+  color: #999;
+  vertical-align: middle;
+  position: absolute;
+  margin-left: -20px;
 }
